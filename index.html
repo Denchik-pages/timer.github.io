@@ -1,0 +1,31 @@
+<p>You have: <span id="timer">0</span> seconds left</p>
+<button onclick="startTimer()">Start Timer</button>
+<button onclick="pauseTimer()">Pause Timer</button>
+<button onclick="resetTimer()">Reset Timer</button>
+
+<script>
+  let count = 0;
+  let interval;
+  let timerRunning = false;
+
+  function startTimer() {
+    if(timerRunning) return;
+    interval = setInterval(() => {
+      count++;
+      document.getElementById('timer').innerHTML = count;
+    }, 1000);
+    timerRunning = true;
+  }
+
+  function pauseTimer() {
+    clearInterval(interval);
+    timerRunning = false;
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    count = 0;
+    document.getElementById('timer').innerHTML = count;
+    timerRunning = false;
+  }
+</script>
